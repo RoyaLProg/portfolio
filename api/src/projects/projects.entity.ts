@@ -19,4 +19,7 @@ export class Projects {
 
   @Column('text')
   groups: string;
+
+  @Column('text')
+  github_link: string;
 }

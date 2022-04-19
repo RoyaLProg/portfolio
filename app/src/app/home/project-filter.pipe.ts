@@ -11,6 +11,16 @@ export class ProjectFilterPipe implements PipeTransform {
       return items;
     }
 
-    return items.filter(item => item.groups.indexOf(filter) !== -1);
+    var newitems: Project[] = [];
+    items.forEach(item => {
+      let groups = item.groups.split(',');
+      groups.forEach(group => {
+        if (group === filter) {
+          newitems.push(item);
+        }
+      }
+      );
+    });
+    return newitems;
   }
 }

@@ -27,6 +27,8 @@ export class ProjectsController {
     newProject.image = body.image;
     newProject.short_desc = body.short_desc;
     newProject.groups = body.groups;
+    if (body.github_link) newProject.github_link = body.github_link;
+    else newProject.github_link = '';
     return await this.projectsService.create(newProject).then(
       () => {
         return 'Project created !';
@@ -47,7 +49,8 @@ export class ProjectsController {
       !body.description ||
       !body.image ||
       !body.short_desc ||
-      !body.groups
+      !body.groups ||
+      !body.github_link
     ) {
       return 'Missing parameters';
     }
@@ -57,6 +60,7 @@ export class ProjectsController {
     Project.image = body.image;
     Project.short_desc = body.short_desc;
     Project.groups = body.groups;
+    Project.github_link = body.github_link;
     return await this.projectsService.update(param.id, Project).then(
       () => {
         return 'Project updated !';

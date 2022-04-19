@@ -31,16 +31,29 @@
         </div>
         <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="InputTitle" class="form-label text-white" >Title</label>
+            <label for="InputTitle" class="form-label text-white" >Title *</label>
             <input type="text" class="form-control" id="InputTitle" formControlName="title">
           </div>
           <div class="mb-3">
-            <label for="InputShortDesc" class="form-label text-white">Short description</label>
+            <label for="InputShortDesc" class="form-label text-white">Short description *</label>
             <input type="text" class="form-control" id="InputShortDesc" formControlName="short_desc">
           </div>
           <div class="mb-3">
-            <label for="InputDesc" class="form-label text-white">Description</label>
+            <label for="InputGroups" class="form-label text-white">Groupes * (séparés par des virgules)</label>
+            <input type="text" class="form-control" id="InputGroups" formControlName="groups">
+          </div>
+		      <div class="mb-3">
+            <label for="InputImage" class="form-label text-white">link to an image</label>
+            <input type="text" class="form-control" id="InputImage" formControlName="image">
+          </div>
+          <div class="mb-3">
+            <label for="InputGihub" class="form-label text-white">link to github</label>
+            <input type="text" class="form-control" id="InputGithub" formControlName="github">
+          </div>
+          <div class="mb-3">
+            <label for="InputDesc" class="form-label text-white">Description *</label>
             <textarea type="text-area" class="form-control" id="InputDesc" formControlName="desc" rows="6"></textarea>
+            <p class="text-secondary">* : required fields</p>
           </div>
           <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>

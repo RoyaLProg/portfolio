@@ -25,11 +25,11 @@ export class ProjectsService {
     return this.http.get<Project>(this.baseUrl + '/projects/' + id, this.httpOptions);
   }
 
-  createProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.baseUrl + '/projects', project, this.httpOptions);
+  createProject(project: Project): Observable<string> {
+    return this.http.post<string>(this.baseUrl + '/projects', project, this.httpOptions);
   }
 
   updateProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(this.baseUrl + '/projects/' + project.id, project, this.httpOptions);
+    return this.http.post<Project>(this.baseUrl + '/projects/' + project.id, project, this.httpOptions);
   }
 }
