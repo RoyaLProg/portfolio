@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ProjectsService } from 'src/app/home/projects.service';
 import { Project } from 'src/app/home/project';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/admin/admin.service';
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NewComponent implements OnInit {
 
-  constructor(private readonly projectsService: ProjectsService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private readonly projectsService: ProjectsService, private formBuilder: FormBuilder, private router: Router, private readonly adminService: AdminService) { }
 
   message = '';
   newForm = this.formBuilder.group({
@@ -23,6 +24,9 @@ export class NewComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if (!this.adminService.isLoggedIn()) {
+      this.router.navigate(['/admin']);
+    }
   }
 
   onSubmit() {

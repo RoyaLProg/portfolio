@@ -89,11 +89,11 @@
       <div id="projectContainer">
         <div class="row">
           <div class="col-3 card project text-white m-3 p-0" style="width: 18rem;" *ngFor="let project of projects | projectFilter:projectSelect.value">
-            <img src="{{project.image}}" class="card-img-top" alt="{{project.title}}">
+            <img src="{{project.image}}" style="max-height: 168px; width: auto;" class="card-img-top" alt="{{project.title}}">
             <div class="card-body">
               <h5 class="card-title">{{project.title}}</h5>
               <p class="card-text">{{project.short_desc}}</p>
-              <a class="btn btn-primary">see project</a>
+              <a class="btn btn-primary" routerLink="{{project.id}}">see project</a>
             </div>
           </div>
         </div>

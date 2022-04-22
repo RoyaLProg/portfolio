@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit {
         else{
           this.message = '';
           this.adminService.setSession(data);
+          this.router.navigate(['/admin/dashboard']);
         }
       }
     );

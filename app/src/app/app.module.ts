@@ -14,6 +14,9 @@ import { DashboardHomeComponent } from './admin/dashboard/dashboard-home/dashboa
 import { ProjectsComponent } from './admin/dashboard/projects/projects.component';
 import { NewComponent } from './admin/dashboard/projects/new/new.component';
 import { ProjectHomeComponent } from './admin/dashboard/projects/project-home/project-home.component';
+import { EditComponent } from './admin/dashboard/projects/edit/edit.component';
+import { GithubNewComponent } from './admin/dashboard/projects/github-new/github-new.component';
+import { ProjectViewComponent } from './project-view/project-view.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ProjectHomeComponent } from './admin/dashboard/projects/project-home/pr
     DashboardHomeComponent,
     ProjectsComponent,
     NewComponent,
-    ProjectHomeComponent
+    ProjectHomeComponent,
+    EditComponent,
+    GithubNewComponent,
+    ProjectViewComponent
   ],
   imports: [
     BrowserModule,

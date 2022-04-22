@@ -29,7 +29,12 @@ export class ProjectsService {
     return this.http.post<string>(this.baseUrl + '/projects', project, this.httpOptions);
   }
 
-  updateProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.baseUrl + '/projects/' + project.id, project, this.httpOptions);
+  updateProject(project: Project): Observable<string> {
+    return this.http.post<string>(this.baseUrl + '/projects/' + project.id, project, this.httpOptions);
+  }
+
+  deleteProject(id: number): Observable<string> {
+    console.log('here', id);
+    return this.http.post<string>(this.baseUrl + '/projects/' + id + '/delete', this.httpOptions);
   }
 }

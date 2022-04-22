@@ -1,0 +1,16 @@
+<div *ngIf="!project">
+  <p class="text-white">404 NOT FOUND</p>
+</div>
+<div class="container box text-white my-5 p-5" *ngIf="project">
+  <a class="goBack" routerLink="/">ᐊ go back</a>
+  <div class="row my-5">
+    <h1 class="text-center">{{project.title}}</h1>
+  </div>
+  <div class="row">
+    <h2 class="py-3">Description</h2>
+    <p class="text-break">{{project.description}}</p>
+  </div>
+  <div class="justify-item-center row">
+    <a class="btn btn-primary my-5 col-2" *ngIf="project.github_link" href="{{project.github_link}}">See on github</a>
+  </div>
+</div>
