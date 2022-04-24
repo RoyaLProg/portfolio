@@ -33,11 +33,7 @@ export class CommentsController {
   }
 
   @Post('')
-  async create(@Body() body, @Headers() headers): Promise<string> {
-    if (!headers.authorization) throw new HttpException('Unauthorized', 401);
-    const token = headers.authorization.split(' ')[1];
-    const decoded = await this.authenticationService.validateToken(token);
-    if (!decoded) throw new HttpException('Unauthorized', 401);
+  async create(@Body() body): Promise<string> {
 
     if (!body.username || !body.comment || !body.project_id || !body.date) {
       return 'Missing parameters';
