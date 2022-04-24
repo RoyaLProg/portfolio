@@ -85,12 +85,12 @@ export class CommentsController {
   }
 
   @Post(':id/delete')
-  async delete(id: number, @Headers() headers): Promise<void> {
+  async delete(@Param() param, @Headers() headers): Promise<string> {
     if (!headers.authorization) throw new HttpException('Unauthorized', 401);
     const token = headers.authorization.split(' ')[1];
     const decoded = await this.authenticationService.validateToken(token);
     if (!decoded) throw new HttpException('Unauthorized', 401);
-    await this.commentsService.delete(id).then(
+    return await this.commentsService.delete(param.id).then(
       () => {
         return 'Success';
       },
