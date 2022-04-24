@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS comments (
 
 INSERT INTO users (username, password) VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
 
-INSERT INTO projects (title, description, short_desc, image, groups) VALUES  ('Default', 'SomeDefaultDescription', 'SomeDefaultDescription', 'https://choualbox.com/Img/1611426483399.jpg', 'Default');
+INSERT INTO projects (title, description, short_desc, image, groups, github_link) VALUES  ('Default', 'SomeDefaultDescription', 'SomeDefaultDescription', 'https://choualbox.com/Img/1611426483399.jpg', 'Default', '');
 
 INSERT INTO comments (username, comment, date ,project_id) VALUES ('defaultCommentator', 'An example of a comment', '2022-04-23', 1);
 
