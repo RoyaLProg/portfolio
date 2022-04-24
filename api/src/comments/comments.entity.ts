@@ -14,6 +14,6 @@ export class Comments {
   @Column('date')
   date: Date;
 
-  @Column('text')
-  project_id: string;
+  @Column('int')
+  project_id: number;
 }
