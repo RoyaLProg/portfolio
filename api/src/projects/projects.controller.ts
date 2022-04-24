@@ -1,17 +1,33 @@
-import { Controller, Get, Param, Body, Post } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Body,
+  Post,
+  Headers,
+  HttpException,
+} from '@nestjs/common';
 import { Projects } from './projects.entity';
 import { ProjectsService } from './projects.service';
+import { AuthenticationService } from 'src/authentication/authentication.service';
 
 @Controller('projects')
 export class ProjectsController {
-  constructor(private readonly projectsService: ProjectsService) {}
+  constructor(
+    private readonly projectsService: ProjectsService,
+    private readonly authenticationService: AuthenticationService,
+  ) {}
 
   @Get()
   async findAll(): Promise<Projects[]> {
     return await this.projectsService.findAll();
   }
   @Post()
-  async add(@Body() body): Promise<string> {
+  async add(@Body() body, @Headers() headers): Promise<string> {
+    if (!headers.authorization) throw new HttpException('Unauthorized', 401);
+    const token = headers.authorization.split(' ')[1];
+    const decoded = await this.authenticationService.validateToken(token);
+    if (!decoded) throw new HttpException('Unauthorized', 401);
     if (
       !body.title ||
       !body.description ||
@@ -43,7 +59,15 @@ export class ProjectsController {
     return await this.projectsService.findOne(params.id);
   }
   @Post(':id')
-  async update(@Param() param, @Body() body): Promise<string> {
+  async update(
+    @Param() param,
+    @Body() body,
+    @Headers() headers,
+  ): Promise<string> {
+    if (!headers.authorization) throw new HttpException('Unauthorized', 401);
+    const token = headers.authorization.split(' ')[1];
+    const decoded = await this.authenticationService.validateToken(token);
+    if (!decoded) throw new HttpException('Unauthorized', 401);
     if (
       !body.title ||
       !body.description ||
@@ -71,7 +95,11 @@ export class ProjectsController {
     );
   }
   @Post(':id/delete')
-  async delete(@Param() param): Promise<string> {
+  async delete(@Param() param, @Headers() headers): Promise<string> {
+    if (!headers.authorization) throw new HttpException('Unauthorized', 401);
+    const token = headers.authorization.split(' ')[1];
+    const decoded = await this.authenticationService.validateToken(token);
+    if (!decoded) throw new HttpException('Unauthorized', 401);
     return await this.projectsService.delete(param.id).then(
       () => {
         return 'Project deleted !';

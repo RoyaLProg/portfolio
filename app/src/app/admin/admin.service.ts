@@ -13,8 +13,8 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   connect(username: string, password: string): Observable<Response> {
-  var body: User = {username: username, password: password};
-  return this.http.post<Response>('http://localhost:3000/user/connect', body);
+    var body: User = {username: username, password: password};
+    return this.http.post<Response>('http://localhost:3000/user/connect', body);
   }
 
   setSession(response : Response): void {
@@ -28,7 +28,7 @@ export class AdminService {
     localStorage.removeItem('EXPIRES_AT');
   }
 
-  public isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     return moment().isBefore(this.getExpiration());
   }
 

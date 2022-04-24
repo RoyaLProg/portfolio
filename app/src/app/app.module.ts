@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectFilterPipe } from './home/project-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AuthInterceptor, DashboardComponent } from './admin/dashboard/dashboard.component';
 import { DashboardHomeComponent } from './admin/dashboard/dashboard-home/dashboard-home.component';
 import { ProjectsComponent } from './admin/dashboard/projects/projects.component';
 import { NewComponent } from './admin/dashboard/projects/new/new.component';
@@ -17,7 +16,9 @@ import { ProjectHomeComponent } from './admin/dashboard/projects/project-home/pr
 import { EditComponent } from './admin/dashboard/projects/edit/edit.component';
 import { GithubNewComponent } from './admin/dashboard/projects/github-new/github-new.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
-
+import { CommentsComponent } from './admin/dashboard/comments/comments.component';
+import { CommentsHomeComponent } from './admin/dashboard/comments/comments-home/comments-home.component';
+import { UserComponent } from './admin/dashboard/user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,10 @@ import { ProjectViewComponent } from './project-view/project-view.component';
     ProjectHomeComponent,
     EditComponent,
     GithubNewComponent,
-    ProjectViewComponent
+    ProjectViewComponent,
+    CommentsComponent,
+    CommentsHomeComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ import { ProjectViewComponent } from './project-view/project-view.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ CookieService ],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true} ],
   bootstrap: [AppComponent]
 })
 

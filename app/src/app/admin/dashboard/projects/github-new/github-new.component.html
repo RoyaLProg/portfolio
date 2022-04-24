@@ -1,31 +1,7 @@
-<div id="title">
-  <div class="text-white text-center">
-    <h1>Dashboard</h1>
-  </div>
-  <nav>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" aria-current="page" routerLink="/admin/dashboard">Home</a>
-    </li>
-    <li class="nav-item dropdown active">
-      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Projects</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" routerLink="/admin/dashboard/projects/new">Add a project</a></li>
-        <li><a class="dropdown-item" routerLink="/admin/dashboard/projects/new-github">Add from github</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" routerLink="/admin/dashboard/projects">See projects</a></li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="logout()">Logout</a>
-    </li>
-  </ul>
-  </nav>
-</div>
 <div class="container" *ngIf="!Repos[0]">
   <div class="row box justify-content-center m-5">
     <div class="col-7 self-align-center m-5 p-5">
-      <div class="alert-danger" *ngIF="error">
+      <div class="alert-danger" *ngIf="error">
         {{error}}
       </div>
       <form class="d-flex">
@@ -37,10 +13,10 @@
 </div>
 <div class="container" *ngIf="Repos[0]">
   <div class="row box justify-content-center m-5">
-    <div class="alert-danger" *ngIF="error">
+    <div class="alert-danger" *ngIf="error">
       {{error}}
     </div>
-    <div class="alert-succes" *ngIF="success">
+    <div class="alert-succes" *ngIf="success">
       {{success}}
     </div>
     <div class="card col-3 p-2 m-3 project text-white" *ngFor="let Repo of Repos">

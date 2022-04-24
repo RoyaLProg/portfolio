@@ -10,6 +10,9 @@ import { ProjectHomeComponent } from './admin/dashboard/projects/project-home/pr
 import { EditComponent } from './admin/dashboard/projects/edit/edit.component';
 import { GithubNewComponent } from './admin/dashboard/projects/github-new/github-new.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
+import { CommentsComponent } from './admin/dashboard/comments/comments.component';
+import { CommentsHomeComponent } from './admin/dashboard/comments/comments-home/comments-home.component';
+import { UserComponent } from './admin/dashboard/user/user.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -24,7 +27,13 @@ const routes: Routes = [
           {path: 'new-github', component: GithubNewComponent},
           {path: ':id', component: EditComponent},
         ]
-      }
+      },
+      {path: 'comments', component: CommentsComponent,
+        children: [
+          {path: '', component: CommentsHomeComponent},
+        ]
+      },
+      {path: 'user', component: UserComponent},
   ] },
   {path: ':id', component: ProjectViewComponent},
   { path: '**', redirectTo: '/' },

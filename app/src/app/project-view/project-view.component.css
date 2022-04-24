@@ -2,3 +2,7 @@
   color:lightgray;
   text-decoration: none;
 }
+
+.comment{
+  border-top: 1px solid #555;
+}

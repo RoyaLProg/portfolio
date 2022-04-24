@@ -9,3 +9,4 @@ api/src/keys/jwtRS256.key.pub
 app/.vscode
 app/.gitignore
 app/README.md
+api/.vscode

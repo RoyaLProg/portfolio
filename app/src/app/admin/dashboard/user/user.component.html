@@ -1,0 +1,42 @@
+<div class="container py-5">
+  <div class="row box align-middle p-5 my-5">
+    <h2 class="text-white text-center">Change username</h2>
+    <form (ngSubmit)="changeUsername()" [formGroup]="changeUsernameForm">
+      <div>
+        <div class="form-group text-white col-6">
+          <label for="username">New Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Username">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Change Username</button>
+      </div>
+    </form>
+  </div>
+  <div class="row box align-middle p-5 my-5">
+    <h2 class="text-white text-center">Change password</h2>
+    <form (ngSubmit)="changePassword()" [formGroup]="changePasswordForm">
+      <div>
+        <div class="form-group text-white col-6">
+          <label for="oldpassword">Old password</label>
+          <input type="password" class="form-control" id="oldpassword" formControlName="oldPassword" placeholder="Old password">
+        </div>
+      </div>
+      <div>
+        <div class="form-group text-white col-6">
+          <label for="newpassword">New password</label>
+          <input type="password" class="form-control" id="newpassword" formControlName="newPassword" placeholder="New password">
+        </div>
+      </div>
+      <div>
+        <div class="form-group text-white col-6">
+          <label for="confirmpassword">Old password</label>
+          <input type="password" class="form-control" id="confirmpassword" formControlName="confirmPassword" placeholder="Confirm password">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Change Password</button>
+      </div>
+    </form>
+  </div>
+</div>

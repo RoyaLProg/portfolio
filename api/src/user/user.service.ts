@@ -27,7 +27,7 @@ export class UserService {
       };
     }
     const jwtBearerToken = jwt.sign({}, this.RSA_PRIVATE_KEY, {
-      expiresIn: 120,
+      expiresIn: '2h',
       algorithm: 'RS256',
       subject: user.id.toString(),
     });
@@ -36,5 +36,47 @@ export class UserService {
       message: 'Successfully connected',
       data: { token: jwtBearerToken, expiresIn: 120 },
     };
+  }
+  async changePassword(id: number, password: string): Promise<Response> {
+    const user = await this.userRepository.findOne({
+      where: { id: id },
+    });
+    if (!user) {
+      return {
+        success: false,
+        message: 'User not found',
+        data: null,
+      };
+    }
+    user.password = password;
+    await this.userRepository.update(id, user);
+    return {
+      success: true,
+      message: 'Password changed',
+      data: null,
+    };
+  }
+
+  async changeUsername(id: number, username: string): Promise<Response> {
+    return await this.userRepository
+      .update(id, { username: username })
+      .then(() => {
+        return {
+          success: true,
+          message: 'Username changed',
+          data: null,
+        };
+      })
+      .catch(() => {
+        return {
+          success: false,
+          message: 'Username already taken',
+          data: null,
+        };
+      });
+  }
+
+  async findOne(id: number): Promise<Users> {
+    return await this.userRepository.findOne(id);
   }
 }

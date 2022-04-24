@@ -8,7 +8,10 @@ import { ProjectsService } from './projects/projects.service';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { Users } from './user/user.entity';
-
+import { CommentsController } from './comments/comments.controller';
+import { Comments } from './comments/comments.entity';
+import { CommentsService } from './comments/comments.service';
+import { AuthenticationService } from './authentication/authentication.service';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -18,12 +21,13 @@ import { Users } from './user/user.entity';
       username: 'royal',
       password: process.env.SQL_PASSWORD,
       database: 'portfolio',
-      entities: [Projects, Users],
+      entities: [Projects, Users, Comments],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Projects, Users]),
+    TypeOrmModule.forFeature([Projects, Users, Comments]),
   ],
-  controllers: [AppController, ProjectsController, UserController],
-  providers: [AppService, ProjectsService, UserService],
+  // eslint-disable-next-line prettier/prettier
+  controllers: [AppController, ProjectsController, UserController, CommentsController],
+  providers: [AppService, ProjectsService, UserService, CommentsService, AuthenticationService],
 })
 export class AppModule {}
