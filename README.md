@@ -3,10 +3,16 @@
 Please install postgresql, angularcli and nodejs/npm on your machine
 You can fork this repository to make it your portfolio and have you're own version, its just a base
 
+install nestcli and angular cli :
+```shell
+npm i -g @nestjs/cli @angular/cli
+```
+
 git clone the repo where ever you want
 ```shell
 git clone https://www.github.com/RoyaLProg/portfolio 
 ```
+
 create the database
 ```shell
 createdb portfolio
@@ -28,6 +34,15 @@ in psql do :
 exit
 ```
 
+install dependancies :
+```shell
+cd api && npm i && cd ../app && npm i && cd ..
+```
+
+build ressource :
+```shell
+cd api && nest build && cd ../app && ng build --prod && cd ..
+```
 change username and password (and database if you didnt use portfolio) on api/src/app.module.ts and api/dist/app.module.ts
 
 generate keys for JWT :
