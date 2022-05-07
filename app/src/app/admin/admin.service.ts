@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Response } from './response';
 import { User } from './user';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AdminService {
 
   connect(username: string, password: string): Observable<Response> {
     var body: User = {username: username, password: password};
-    return this.http.post<Response>('http://localhost:3000/user/connect', body);
+    return this.http.post<Response>(`${environment.baseURL}user/connect`, body);
   }
 
   setSession(response : Response): void {
