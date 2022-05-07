@@ -42,19 +42,19 @@ export class GithubNewComponent implements OnInit {
   }
 
   onAdd(repo: GithubRepo) {
-    let Project: Project = {
-      title: repo.name,
-      short_desc: repo.description,
-      github_link: repo.html_url,
-      image: repo.owner.avatar_url,
-      description: repo.description,
-      groups: repo.language + ",github",
-    }
+    let Project: Project = {} as Project;
+    Project.title = repo.name;
+    if (repo.description) Project.short_desc = repo.description;
+    else Project.short_desc = repo.name;
+    Project.github_link = repo.html_url;
+    Project.image = repo.owner.avatar_url;
+    if (repo.description) Project.description = repo.description;
+    else Project.description = "";
+    Project.groups = repo.language + ",github";
 
     this.projectsService.createProject(Project).subscribe(
-      (data: string) => {
-        console.log(data);
-        this.success = data;
+      () => {
+        this.router.navigate(['/admin/dashboard/projects']);
       }
     );
   }

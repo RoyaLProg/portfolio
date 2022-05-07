@@ -4,6 +4,7 @@ import { ProjectsService } from 'src/app/home/projects.service';
 import { Project } from 'src/app/home/project';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin/admin.service';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
@@ -35,22 +36,20 @@ export class NewComponent implements OnInit {
       return ;
     }
 
-    var newProject: Project = {
-      title: this.newForm.value.title,
-      short_desc: this.newForm.value.short_desc,
-      groups: this.newForm.value.groups,
-      image: this.newForm.value.image,
-      github_link: this.newForm.value.github,
-      description: this.newForm.value.desc,
-    };
+    let Project: Project = {} as Project;
+    Project.title = this.newForm.value.title;
+    Project.short_desc = this.newForm.value.short_desc;
+    if (this.newForm.value.github !== '') Project.github_link = this.newForm.value.github;
+    else Project.github_link = '#';
+    if (this.newForm.value.image !== '') Project.image = this.newForm.value.image;
+    else Project.image = "https://choualbox.com/Img/1611426483399.jpg";
+    Project.description = this.newForm.value.desc;
+    Project.groups = this.newForm.value.groups;
 
-    this.projectsService.createProject(newProject).subscribe(
-      (project) => {
-        console.log(project);
+    this.projectsService.createProject(Project).subscribe(
+      () => {
         this.router.navigate(['/admin/dashboard/projects']);
       }
     );
-    this.message = 'Project created';
-    this.router.navigate(['/admin/dashboard/projects']);
   }
 }
