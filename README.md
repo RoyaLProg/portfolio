@@ -160,7 +160,9 @@ systemctl restart nginx
 ```
 
 connect to the admin dashboard on uri/admin
+
 default credential are : admin:admin
+
 /!\ change password (and username) in "Manage User" on the dashboard ! /!\
 
 You should be good to go !

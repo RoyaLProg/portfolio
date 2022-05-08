@@ -10,3 +10,5 @@ app/.vscode
 app/.gitignore
 app/README.md
 api/.vscode
+
+.idea
