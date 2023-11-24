@@ -1,4 +1,4 @@
-#HOW TO USE
+# HOW TO USE
 
 Please install postgresql, angularcli and nodejs/npm on your machine
 You can fork this repository to make it your portfolio and have you're own version, its just a base
