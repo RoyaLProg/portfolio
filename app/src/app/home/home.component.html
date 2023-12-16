@@ -32,46 +32,11 @@
       </h2>
       <p class="text-secondary text-center fst-italic">Note : they will never be 100%, there is always something new to learn</p>
       <div class="row text-white  align-self-center">
-        <div class="col-md-1 mx-5">
-          <label>C</label>
-          <progress max="100" value="70"> - 70% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>C++</label>
-          <progress max="100" value="65"> - 65% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>Javascript</label>
-          <progress max="100" value="55"> - 55% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>Typescript</label>
-          <progress max="100" value="55"> - 55% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>Angular</label>
-          <progress max="100" value="45"> - 45% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>NestJS</label>
-          <progress max="100" value="45"> - 45% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>NodeJS</label>
-          <progress max="100" value="45"> - 45% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>Python</label>
-          <progress max="100" value="70"> - 70% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>HTML&CSS</label>
-          <progress max="100" value="70"> - 70% </progress>
-        </div>
-        <div class="col-md-1 mx-5">
-          <label>PHP</label>
-          <progress max="100" value="65"> - 65% </progress>
-        </div>
+        <div class="col-3 card project text-white m-3 p-0" style="width: 18rem;" *ngFor="let skill of skills">
+          <div class="card-body">
+            <h5 class="card-title">{{skill.name}}</h5>
+            <a class="btn btn-primary" routerLink="{{skill.id}}">see skill</a>
+          </div>
       </div>
     </div>
   </div>
