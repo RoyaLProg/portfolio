@@ -1,13 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Skills } from './skills.entity';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+
+import {Skills} from './skills.entity';
 
 @Injectable()
 export class SkillsService {
   constructor(
-    @InjectRepository(Skills)
-    private readonly skillsRepository: Repository<Skills>,
+      @InjectRepository(Skills) private readonly skillsRepository:
+          Repository<Skills>,
   ) {}
 
   async getSkills(): Promise<Skills[]> {
@@ -15,7 +16,7 @@ export class SkillsService {
   }
 
   async getSkill(id: number): Promise<Skills> {
-    return await this.skillsRepository.findOne(id);
+    return await this.skillsRepository.findOneBy({id});
   }
 
   async createSkill(skill: Skills): Promise<Skills> {

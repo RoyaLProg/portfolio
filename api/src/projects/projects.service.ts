@@ -1,13 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Projects } from './projects.entity';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+
+import {Projects} from './projects.entity';
 
 @Injectable()
 export class ProjectsService {
   constructor(
-    @InjectRepository(Projects)
-    private readonly projectsRepository: Repository<Projects>,
+      @InjectRepository(Projects) private readonly projectsRepository:
+          Repository<Projects>,
   ) {}
 
   async findAll(): Promise<Projects[]> {
@@ -15,7 +16,7 @@ export class ProjectsService {
   }
 
   async findOne(id: number): Promise<Projects> {
-    return await this.projectsRepository.findOne(id);
+    return await this.projectsRepository.findOneBy({id});
   }
 
   async create(projects: Projects): Promise<Projects> {

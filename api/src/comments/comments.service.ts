@@ -1,13 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Comments } from './comments.entity';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {Repository} from 'typeorm';
+
+import {Comments} from './comments.entity';
 
 @Injectable()
 export class CommentsService {
   constructor(
-    @InjectRepository(Comments)
-    private readonly commentsRepository: Repository<Comments>,
+      @InjectRepository(Comments) private readonly commentsRepository:
+          Repository<Comments>,
   ) {}
 
   async findAll(): Promise<Comments[]> {
@@ -15,13 +16,13 @@ export class CommentsService {
   }
 
   async findOne(id: number): Promise<Comments> {
-    return await this.commentsRepository.findOne(id);
+    return await this.commentsRepository.findOneBy({id});
   }
 
   async findByProject(project_id: number): Promise<Comments[]> {
     return await this.commentsRepository.find({
-      where: {
-        project_id: project_id,
+      where : {
+        project_id : project_id,
       },
     });
   }
