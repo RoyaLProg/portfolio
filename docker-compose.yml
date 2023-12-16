@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  postgres:
+    build:
+      context: ./srcs/postgres
+    restart: always
+    networks:
+      - backend
+    env_file: 
+      - .env-postgres
+
+  next:
+    build:
+      context: ./srcs/app
+    depends_on: 
+      - postgres
+    networks:
+      - backend
+    volumes:
+      - nextdata:/opt/app/src
+    ports:
+      - "3000:3000"
+
+networks:
+  backend:
+
+volumes:
+  nextdata:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./srcs/app/src
