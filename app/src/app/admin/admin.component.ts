@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from './admin.service';
 import { sha256 } from 'js-sha256';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Response } from './response';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class AdminComponent implements OnInit {
 
-  constructor(private adminService : AdminService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private adminService : AdminService, private formBuilder: UntypedFormBuilder, private router: Router) { }
 
   adminForm = this.formBuilder.group({
     username: '',

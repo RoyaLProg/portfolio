@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../admin.service';
 import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Response } from '../../response';
 import { sha256 } from 'js-sha256';
 import { UserService } from '../user.service';
@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   constructor(
     private readonly adminService: AdminService,
     private readonly router: Router,
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly userService: UserService) { }
 
   ngOnInit(): void {

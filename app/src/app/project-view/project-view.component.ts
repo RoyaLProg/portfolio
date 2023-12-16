@@ -4,7 +4,7 @@ import { ProjectsService } from 'src/app/home/projects.service';
 import { Project } from 'src/app/home/project';
 import { CommentsService } from 'src/app/project-view/comments.service';
 import { Comments } from 'src/app/project-view/comments';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-project-view',
   templateUrl: './project-view.component.html',
@@ -15,7 +15,7 @@ export class ProjectViewComponent implements OnInit {
   constructor(private readonly projectsService: ProjectsService,
               private route: ActivatedRoute,
               private readonly commentsService: CommentsService,
-              private readonly formBuilder: FormBuilder) { }
+              private readonly formBuilder: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
