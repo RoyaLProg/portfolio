@@ -8,7 +8,7 @@ sudo apt install docker.io docker-compose
 
 # OR
 
-sudo pacman +S docker.io docker-compose
+sudo pacman -S docker.io docker-compose
 ```
 
 git clone the repo where ever you want
