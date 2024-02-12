@@ -9,6 +9,7 @@ export default function Home() {
     <main className={styles.main}>
         <div id={styles.container}>
             <p> WORKING ON IT </p>
+			<p> LIKE FOR REAL </p>
         </div>    
     </main>
   )
