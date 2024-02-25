@@ -2,6 +2,7 @@ version: "3"
 
 services:
   postgres:
+    container_name: 'postgres'
     build:
       context: ./srcs/postgres
     restart: always
@@ -11,6 +12,7 @@ services:
       - .env-postgres
 
   next:
+    container_name: 'next'
     build:
       context: ./srcs/app
     depends_on: 
@@ -24,6 +26,7 @@ services:
 
 networks:
   backend:
+    driver: bridge
 
 volumes:
   nextdata:
