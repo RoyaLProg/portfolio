@@ -1,1 +1,6 @@
 .env-postgres
+srcs/app/.next
+srcs/app/node_modules
+srcs/app/.gitignore
+srcs/app/next-env.d.ts
+srcs/app/.env
