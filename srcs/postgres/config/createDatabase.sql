@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS users (
-	id SERIAL,
+	id SERIAL UNIQUE,
 	username TEXT,
 	password TEXT
 );
 CREATE TABLE IF NOT EXISTS projects (
-	id SERIAL,
+	id SERIAL UNIQUE,
 	title TEXT,
 	description TEXT,
 	image TEXT,
@@ -13,14 +13,14 @@ CREATE TABLE IF NOT EXISTS projects (
 	github_link TEXT
 );
 CREATE TABLE IF NOT EXISTS comments (
-	id SERIAL,
+	id SERIAL UNIQUE,
 	username TEXT,
 	comment TEXT,
 	date DATE,
 	project_id INT
 );
 CREATE TABLE IF NOT EXISTS skills (
-	id SERIAL,
+	id SERIAL UNIQUE,
 	name TEXT,
 	advancement INT,
 	description TEXT
