@@ -15,3 +15,7 @@ export async function GET ( request : Request, { params } : { params : {id : num
 
 	return new Response(JSON.stringify(project));
 }
+
+export async function PATCH ( request : Request, { params } : { params : {id : number} } ) : Promise<Response> {
+	return new Response('OK');
+}
