@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { PrismaClient } from '@prisma/client'
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 
 const prisma = new PrismaClient();
 
@@ -30,3 +30,12 @@ export async function POST ( request : Request ) : Promise<NextResponse> {
 	return response;
 }
 
+export async function DELETE ( request : NextRequest ) : Promise<NextResponse> {
+	const cookies = request.cookies.get('identity');
+	if (!cookies || !cookies.value)
+		return new NextResponse('Not connected', {status: 401});
+
+	const response = new NextResponse('OK');
+	response.cookies.set('identity', '');
+	return response;
+}
