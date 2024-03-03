@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export async function POST ( request : Request ) : Promise<NextResponse> {
 	const body: Object = await request.json();
-	
+
 	if (!body || !body['username'] || !body['password'])
 		return new NextResponse('Error missing a field', {status: 400});
 
