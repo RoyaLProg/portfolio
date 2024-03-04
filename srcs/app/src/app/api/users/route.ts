@@ -5,9 +5,9 @@ import { NextResponse, NextRequest } from 'next/server'
 const prisma = new PrismaClient();
 
 export async function POST ( request : Request ) : Promise<NextResponse> {
-	const body: Object = await request.json();
+	const body = await request.json();
 
-	if (!body || !body['username'] || !body['password'])
+	if (!body || !body['username'] || !body['username'])
 		return new NextResponse('Error missing a field', {status: 400});
 
 	const count: number = await prisma.users.count({
@@ -19,7 +19,9 @@ export async function POST ( request : Request ) : Promise<NextResponse> {
 
 	if (count !== 1)
 		return new NextResponse('Wrong credentials', {status: 401});
+
 	const secret = process.env.JWT_SECRET;
+
 	if (!secret)
 		return new NextResponse('Server Error', {status: 500});
 
