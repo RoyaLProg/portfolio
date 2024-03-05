@@ -51,3 +51,31 @@ export async function PATCH ( request : NextRequest, { params } : { params : {id
 
 	return new Response('Updated');
 }
+
+export async function DELETE ( request : NextRequest, { params } : { params : { id : number } } ) : Promise<Response> {
+	const token =  request.cookies.get('identity');
+	const secret = process.env.JWT_SECRET;
+
+	if (!token || !token.value)
+		return new Response('Not identified', {status: 401});
+	if (!secret)
+		return new Response('Silly dev forgot to set JWT_SECRET environment variable');
+
+	try {
+		jwt.verify(JSON.parse(token.value), secret);
+	} catch {
+		return new Response('Token is not valid', {status: 401});
+	}
+
+	try {
+		await prisma.projects.delete({
+			where: {
+				id: +params.id
+			},
+		});
+	} catch {
+		return  new Response('Something went terribly wrong ...', {status: 500});
+	}
+
+	return new Response('Deleted');
+}
