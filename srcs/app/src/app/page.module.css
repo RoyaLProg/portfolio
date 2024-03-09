@@ -5,8 +5,35 @@
 	height: 100%;
 }
 
-.main p {
-	font-size: xx-large;
-	color: white;
-	text-decoration: underline;
+.HeroLogo {
+	height: 80vh;
+	width: auto;
+}
+
+.next {
+	position: absolute;
+	bottom: 0px;
+	color: var(--text-color);
+	animation: infinite linear 2s nextText;
+	font-size: 60px;
+	text-align: center;
+}
+
+.next p {
+	padding: 0;
+	margin: 0;
+}
+
+.next img {
+	height: 30px;
+	width: auto;
+	fill: var(--text-color);
+	position: relative;
+	bottom: 10px;
+	margin: auto;
+}
+
+@keyframes nextText {
+	0% {bottom: 0px;}
+	50% {bottom: 10px;}
 }

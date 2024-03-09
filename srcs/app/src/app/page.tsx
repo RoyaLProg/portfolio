@@ -1,16 +1,14 @@
 'use client'
 
-// import Image from 'next/image'
-import styles from './page.module.css'
+import Welcome from './Welcome'
+/* 
+ * Peut etre PACIFICO pour les titres ! -> c'est oui
+ *
+ */
 
 export default function Home() {
 
   return (
-    <main className={styles.main}>
-        <div id={styles.container}>
-            <p> WORKING ON IT </p>
-			<p> LIKE FOR REAL </p>
-        </div>    
-    </main>
+	<Welcome />
   )
 }
