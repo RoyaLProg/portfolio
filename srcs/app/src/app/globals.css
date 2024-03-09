@@ -3,11 +3,21 @@
 @tailwind utilities;
 
 :root {
-  
+	--text-color: #fff;
+	--background-color: #0b0b0b;
+	--accent-color: #e6d43f;
+	--grey-color: #333;
+	--secondary-color: #811a1a;
 }
 
 html, body {
 	margin: 0;
-	background-color: #383838;
+	background-color: var(--background-color, blue);
 	height: 100dvh;
-} 
+}
+
+p {
+	font-family: "Gantari", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
