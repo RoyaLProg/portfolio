@@ -39,8 +39,7 @@
 }
 
 @keyframes nextText {
-	0% {bottom: 0px;}
-	50% {bottom: 10px;}
+	50% {transform: translatey( 10px );}
 }
 
 .title {
@@ -66,13 +65,14 @@
 }
 
 #myLife {
-	margin-top: 200px;
 	width: 70dvw;
 	height: 350px;
-	border-radius: 90px;
-	padding: 0;
+	border-radius: 50px;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
 }
 
 #myLifeImg {
@@ -85,19 +85,18 @@
 	width: 100%;
 }
 
-
 #myLifeText {
 	height: 100%;
 	background-color: var(--secondary-color);
 	width: 70%;
 	color: var(--text-color);
-}
-
-
-.mainAboutMe {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100dvh;
+}
+
+
+#mainAboutMe {
 	flex-direction: column;
 }
+

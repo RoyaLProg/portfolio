@@ -7,8 +7,8 @@ import Image from 'next/image'
 
 export default function AboutMe() {
 	return (
-		<main className={styles.mainAboutMe}>
-			<div className={`${styles.title} ${styles.titleAboutMe}`}>
+		<main className={styles.main} id={styles.mainAboutMe}>
+			<div className={styles.title} id={styles.titleAboutMe}>
 				<h1>About-me</h1>
 			</div>
 			<div id={styles.myLife}>
@@ -20,8 +20,8 @@ export default function AboutMe() {
 				</div>
 			</div>
 			<div className={`${styles.next} ${styles.aboutMeNext}`}>
-				<p>Projects and skill</p>
-				<Image src={Down} alt="v" className={styles.nextDown}/>
+				<p>Skills and Projects</p>
+				<Image src={Down} alt="v" className={styles.nextDown} id={styles.nextAboutMe}/>
 			</div>
 		</main>
 	);
