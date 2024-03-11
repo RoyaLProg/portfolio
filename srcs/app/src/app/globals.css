@@ -10,10 +10,13 @@
 	--secondary-color: #811a1a;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 html, body {
 	margin: 0;
-	background-color: var(--background-color, blue);
-	height: 400dvh;
+	height: 100dvh;
 }
 
 p {
