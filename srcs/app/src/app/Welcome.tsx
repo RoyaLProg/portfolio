@@ -4,10 +4,6 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import Logo from '../../public/Logo.svg'
 import Down from '../../public/down.svg'
-/* 
- * Peut etre PACIFICO pour les titres ! -> c'est oui
- *
- */
 
 export default function Welcome() {
 
