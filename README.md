@@ -9,9 +9,10 @@ sudo apt install docker.io docker-compose
 sudo pacman -S docker.io docker-compose
 ```
 
-git clone the repo where ever you want
+git clone the repo wherever you want and cd into it
 ```shell
-git clone https://www.github.com/RoyaLProg/portfolio 
+git clone https://www.github.com/RoyaLProg/portfolio
+cd portfolio
 ```
 
 launch it with docker :
