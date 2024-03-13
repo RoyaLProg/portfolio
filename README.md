@@ -1,7 +1,5 @@
 # HOW TO USE
 
-You can fork this repository to make it your portfolio and have you're own version, its just a base
-
 install docker and docker compose :
 ```shell
 sudo apt install docker.io docker-compose
