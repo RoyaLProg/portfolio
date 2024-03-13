@@ -47,7 +47,8 @@
 	top: 20px;
 	height: 100px;
 	border: 10px solid var(--accent-color);
-	width: 300px;
+	width: auto;
+	padding: 30px;
 	border-radius: 30px;
 	display: flex;
 	justify-content: center;
@@ -78,8 +79,8 @@
 #myLifeImg {
 	height: 350px;
 	width: 30%;
-	background-color: #bbb;
 }
+
 #myLifeImg img{
 	height: 350px;
 	width: 100%;
@@ -87,7 +88,6 @@
 
 #myLifeText {
 	height: 100%;
-	background-color: var(--secondary-color);
 	width: 70%;
 	color: var(--text-color);
 	display: flex;
@@ -95,6 +95,12 @@
 	align-items: center;
 }
 
+#myLifeText p{
+	margin: 20px;
+	padding: 20px;
+	font-size: 30px;
+	border-left: 7px solid var(--accent-color);
+}
 
 #mainAboutMe {
 	flex-direction: column;
