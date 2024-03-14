@@ -6,15 +6,24 @@ import Image from 'next/image'
 
 export default function SkillsAndProjects() {
 	return (
-		<main className={styles.main} id={styles.mainAboutMe}>
-			<div className={`${styles.title} ${styles.titleAboutMe}`}>
-				<h1>Skills & Projects</h1>
+		<main className={styles.main} id={styles.mainSkillsAndProjects}>
+			<div className={`${styles.title}`}>
+				<h1>Skills</h1>
+			</div>
+			<div className={styles.box} id={styles.skills}>
+			</div>
+			
+			<div className={`${styles.title}`} id={styles.projectTitle}>
+				<h1>Projects</h1>
 			</div>
 
-			<div className={`${styles.next} ${styles.aboutMeNext}`}>
-				<p>Contact-me</p>
-				<Image src={Down} alt="v" className={styles.nextDown} id={styles.nextAboutMe}/>
+			<div className={styles.box} id={styles.projects}>
 			</div>
+
+		{/*<div className={`${styles.next}`}>
+				<p>Contact-me</p>
+				<Image src={Down} alt="v" className={styles.nextDown}/>
+			</div> */}
 		</main>
 	);
 }
