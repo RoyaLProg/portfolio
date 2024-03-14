@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import styles from './page.module.css'
-import Logo from '../../public/Logo.svg'
+import Logo from '../../public/Logo 1.svg'
 import Down from '../../public/down.svg'
 
 export default function Welcome() {
