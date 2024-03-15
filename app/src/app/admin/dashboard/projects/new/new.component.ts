@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ProjectsService } from 'src/app/home/projects.service';
 import { Project } from 'src/app/home/project';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class NewComponent implements OnInit {
 
-  constructor(private readonly projectsService: ProjectsService, private formBuilder: UntypedFormBuilder, private router: Router, private readonly adminService: AdminService) { }
+  constructor(private readonly projectsService: ProjectsService, private formBuilder: FormBuilder, private router: Router, private readonly adminService: AdminService) { }
 
   message = '';
   newForm = this.formBuilder.group({

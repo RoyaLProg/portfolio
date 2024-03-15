@@ -3,7 +3,7 @@ import { Project } from 'src/app/home/project';
 import { ProjectsService } from 'src/app/home/projects.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/admin/admin.service';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +13,7 @@ import { UntypedFormBuilder } from '@angular/forms';
 export class EditComponent implements OnInit {
 
   constructor(private readonly projectsService: ProjectsService,
-              private formBuilder: UntypedFormBuilder, private router: Router,
+              private formBuilder: FormBuilder, private router: Router,
               private readonly adminService: AdminService,
               private route: ActivatedRoute) { }
 
