@@ -3,11 +3,8 @@
 import Welcome from './Welcome'
 import AboutMe from './AboutMe'
 import SkillsAndProjects from './SkillsAndProjects'
+import ContactMe from './ContactMe'
 import styles from './page.module.css'
-/* 
- * Peut etre PACIFICO pour les titres ! -> c'est oui
- *
- */
 
 export default function Home() {
 
@@ -16,6 +13,7 @@ export default function Home() {
 		<Welcome />
 		<AboutMe />
 		<SkillsAndProjects />
+		<ContactMe />
 	</div>
   )
 }
