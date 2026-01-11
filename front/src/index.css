@@ -112,10 +112,14 @@ body {
 
 .tui-title::before {
 	content: "▊";
-	animation: blink 2s infinite;	
+	animation: blink 2s infinite;
 }
 
 @keyframes blink {
 	0%, 50% { opacity: 1; }
 	51%, 100% { opacity: 0; }
+}
+
+.carret-block {
+	caret-shape: block;
 }
