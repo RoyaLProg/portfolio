@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  frontend:
+    build: "./front"
+    ports:
+      - "5173:5173"
+    volumes:
+      - "frontend:/opt/frontend"
+  backend:
+    build: "./backend"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "backend:/opt/backend"
+
+volumes:
+  backend:
+    driver: local
+    driver_opts:
+      device: "./backend"
+      o: bind
+      type: none
+  frontend:
+    driver: local
+    driver_opts:
+      device: "./front"
+      o: bind
+      type: none
