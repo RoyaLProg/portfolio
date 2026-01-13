@@ -8,7 +8,7 @@ import { Skills } from './components/ui/TUISkills'
 function App() {
 
   return (
-	<div className='flex flex-col w-screen text-xs md:text-base'>
+	<div className='flex flex-col w-screen text-[10px] md:text-base'>
 		<div className='flex w-full justify-center my-12'>
 			<p className='leading-none text-(--yellow)'>
 &nbsp;____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
