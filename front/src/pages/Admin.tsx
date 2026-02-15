@@ -4,6 +4,7 @@ import { AdminContextProvider, useAdmin } from "@/components/context/adminContex
 import { NavContextProvider } from "@/components/context/navContext";
 import { AdminNav } from "@/components/ui/TUIAdminNav";
 import { AdminProjects } from "@/components/ui/TUIAdminProject";
+import { AdminSkills } from "@/components/ui/TUIAdminSkills";
 
 function RequestPassword() {
 	const [password, setPassword] = useState<string>("");
@@ -76,6 +77,7 @@ function AdminPanel() {
 		<div className="w-screen h-screen flex md:flex-row flex-col gap-8">
 			<AdminNav />
 			<AdminProjects />
+			<AdminSkills />
 		</div>
 	);
 }

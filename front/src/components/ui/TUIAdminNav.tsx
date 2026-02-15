@@ -27,7 +27,7 @@ function ComputerNav() {
 	return (
 		<div className="h-screen hidden md:flex w-78 border-(--gutter-fg-grey) flex-col border-r-2 text-(--white)" >
 			<AdminNavItem name="Projects"/>
-			<AdminNavItem name="Skill"/>
+			<AdminNavItem name="Skills"/>
 			<AdminNavItem name="Danger Zone"/>
 		</div>
 	);

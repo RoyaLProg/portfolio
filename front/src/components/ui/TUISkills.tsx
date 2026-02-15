@@ -20,6 +20,9 @@ export function Skills() {
 						<span className="blink">▀▀▀</span><br />
 					</p>
 				</div>
+				{
+					//<!-- Categories : Languages, Tools (make, ncc, etc..), environements  (web, linux, windows)  -->
+				}
 				<div className="w-full gap-8 p-4 grid grid-cols-2 justify-around md:text-xl md:flex md:flex-col md:flex-row">
 					<div className="text-(--green) text-center w-full">
 						<h1 text-center>TEST</h1>
