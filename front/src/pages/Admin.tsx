@@ -5,6 +5,7 @@ import { NavContextProvider } from "@/components/context/navContext";
 import { AdminNav } from "@/components/ui/TUIAdminNav";
 import { AdminProjects } from "@/components/ui/TUIAdminProject";
 import { AdminSkills } from "@/components/ui/TUIAdminSkills";
+import { AdminDangerZone } from "@/components/ui/TUIAdminDangerZone";
 
 function RequestPassword() {
 	const [password, setPassword] = useState<string>("");
@@ -78,6 +79,7 @@ function AdminPanel() {
 			<AdminNav />
 			<AdminProjects />
 			<AdminSkills />
+			<AdminDangerZone />`
 		</div>
 	);
 }
