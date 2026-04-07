@@ -1,4 +1,4 @@
 export CI=true
 pnpm i
 
-pnpm start
+pnpm start:dev
