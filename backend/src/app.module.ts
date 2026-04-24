@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthController } from './Auth/auth.controller';
 import { ProjectService } from './Projects/projects.service';
 import { ProjectController } from './Projects/projects.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -8,6 +9,8 @@ import { SkillCategory } from './Entities/skillCategory.entity';
 import { Skill } from './Entities/skill.entity';
 import { Project } from './Entities/project.entity';
 import { Auth } from './Entities/auth.entity';
+import { JwtModule } from '@nestjs/jwt';
+import { jwtConstants } from './Auth/jwtConstants';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -20,8 +23,14 @@ import { Auth } from './Entities/auth.entity';
 	entities: [Project, SkillCategory, Skill, Auth],
 	synchronize: true
   }),
-  TypeOrmModule.forFeature([Project, SkillCategory, Skill, Auth])],
-  controllers: [AppController, ProjectController],
+  TypeOrmModule.forFeature([Project, SkillCategory, Skill, Auth]),
+  JwtModule.register({
+	global: true,
+	secret: jwtConstants.secret,
+	signOptions: { expiresIn: '1h' }
+  })
+  ],
+  controllers: [AppController, AuthController, ProjectController],
   providers: [AppService, ProjectService],
   exports: [],
 })
