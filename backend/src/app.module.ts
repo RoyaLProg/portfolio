@@ -11,6 +11,7 @@ import { Project } from './Entities/project.entity';
 import { Auth } from './Entities/auth.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './Auth/jwtConstants';
+import { AuthService } from './Auth/auth.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -31,7 +32,7 @@ import { jwtConstants } from './Auth/jwtConstants';
   })
   ],
   controllers: [AppController, AuthController, ProjectController],
-  providers: [AppService, ProjectService],
+  providers: [AppService, AuthService, ProjectService],
   exports: [],
 })
 export class AppModule {}
