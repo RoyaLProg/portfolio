@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ProjectService } from './Projects/projects.service';
+import { ProjectController } from './Projects/projects.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SkillCategory } from './Entities/skillCategory.entity';
 import { Skill } from './Entities/skill.entity';
