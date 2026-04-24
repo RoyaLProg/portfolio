@@ -12,6 +12,8 @@ import { Auth } from './Entities/auth.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './Auth/jwtConstants';
 import { AuthService } from './Auth/auth.service';
+import { SkillController } from './Skills/skills.controller';
+import { SkillService } from './Skills/skills.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -31,8 +33,8 @@ import { AuthService } from './Auth/auth.service';
 	signOptions: { expiresIn: '1h' }
   })
   ],
-  controllers: [AppController, AuthController, ProjectController],
-  providers: [AppService, AuthService, ProjectService],
+  controllers: [AppController, AuthController, ProjectController, SkillController],
+  providers: [AppService, AuthService, ProjectService, SkillService],
   exports: [],
 })
 export class AppModule {}
