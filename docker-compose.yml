@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: "./front"
+    build: "./frontend"
     ports:
       - "5173:5173"
     volumes:
@@ -29,6 +29,6 @@ volumes:
   frontend:
     driver: local
     driver_opts:
-      device: "./front"
+      device: "./frontend"
       o: bind
       type: none
