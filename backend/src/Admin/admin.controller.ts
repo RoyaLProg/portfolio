@@ -2,7 +2,6 @@ import { Body, Controller, Post, UnauthorizedException, UseGuards } from "@nestj
 import { AdminService } from "./admin.service";
 import { AuthGuard } from "src/Auth/auth.guard";
 import { AuthService } from "src/Auth/auth.service";
-import * as bcrypt from 'bcrypt';
 
 
 // INFO: while the use of async here is not really useful as i await inline
@@ -20,8 +19,7 @@ export class AdminController {
 	@Post('nukeProjects')
 	@UseGuards(AuthGuard)
 	async nukeProjects(@Body() { password }: { password: string }) {
-		const hashPassword = bcrypt.hashSync(password, 10);
-		const correctPassword = await this.authService.login(hashPassword);
+		const correctPassword = await this.authService.login(password);
 
 		if (!correctPassword) throw new UnauthorizedException('invalid password');
 
@@ -33,8 +31,7 @@ export class AdminController {
 	@Post('nukeSkills')
 	@UseGuards(AuthGuard)
 	async nukeSkills(@Body() { password }: { password: string }) {
-		const hashPassword = bcrypt.hashSync(password, 10);
-		const correctPassword = await this.authService.login(hashPassword);
+		const correctPassword = await this.authService.login(password);
 
 		if (!correctPassword) throw new UnauthorizedException('invalid password');
 

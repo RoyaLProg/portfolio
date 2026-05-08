@@ -2,7 +2,6 @@ import { BadRequestException, Body, Controller, InternalServerErrorException, Po
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import { JwtService } from "@nestjs/jwt";
-import * as bcrypt from 'bcrypt';
 
 @Controller('auth')
 export class AuthController {
@@ -15,8 +14,7 @@ export class AuthController {
 	@Post()
 	async login(@Body() {password}: {password: string}) {
 		if (password === undefined) throw new BadRequestException();
-		const hashedPassword = await bcrypt.hash(password, 10);
-		const success = this.authService.login(hashedPassword);
+		const success = this.authService.login(password);
 
 		if (!success) throw new UnauthorizedException;
 
@@ -27,13 +25,11 @@ export class AuthController {
 	@Post('changePassword')
 	@UseGuards(AuthGuard)
 	async changePassword(@Body() {oldPassword, password}: {oldPassword: string, password: string}) {
-		const hashOldPassword = bcrypt.hash(oldPassword, 10);
-		const hashNewPassowrd = bcrypt.hash(password, 10);
 
-		const compareOldPassword = this.authService.login(await hashOldPassword);
+		const compareOldPassword = this.authService.login(oldPassword);
 		if (!compareOldPassword) throw new BadRequestException('old password is incorrect');
 
-		const updatePassword = this.authService.updatePassword(await hashNewPassowrd);
+		const updatePassword = this.authService.updatePassword(password);
 
 		if (!updatePassword) throw new InternalServerErrorException('could not update password in database');
 
