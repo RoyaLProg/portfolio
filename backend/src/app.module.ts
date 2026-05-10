@@ -28,9 +28,7 @@ import { SkillService } from './Skills/skills.service';
   }),
   TypeOrmModule.forFeature([Project, SkillCategory, Skill, Auth]),
   JwtModule.register({
-	global: true,
-	secret: jwtConstants.secret,
-	signOptions: { expiresIn: '1h' }
+	secretOrPrivateKey: jwtConstants.secret
   })
   ],
   controllers: [AppController, AuthController, ProjectController, SkillController],

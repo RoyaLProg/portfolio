@@ -16,11 +16,32 @@ export function AdminContextProvider(props: PropsWithChildren) {
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
 	function checkPassword(password: string) {
-		if (password !== "iamanadmintrustme") {
-			throw new Error("wrong password");
+
+		try {
+			fetch("http://localhost:3000/api/auth", {
+				body: JSON.stringify({password}),
+				headers: { 'Content-Type': 'application/json' },
+				method: "POST"
+			}).then( (response) => {
+				return response.json();
+			}).then( (data) => {
+				if (!data['token']) {
+					console.log(data);
+					return ;
+				}
+				localStorage.setItem('token', data['token']);
+				setIsLoggedIn(true);
+			});
+		} catch (e) {
+			console.error(e);
 		}
 
-		setIsLoggedIn(true);
+		// NOTE: testing block
+		// if (password !== "iamanadmintrustme") {
+		// 	throw new Error("wrong password");
+		// }
+
+		// setIsLoggedIn(true);
 	}
 
 	return (

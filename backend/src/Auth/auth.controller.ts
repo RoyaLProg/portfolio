@@ -2,6 +2,7 @@ import { BadRequestException, Body, Controller, InternalServerErrorException, Po
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import { JwtService } from "@nestjs/jwt";
+import { jwtConstants } from "./jwtConstants";
 
 @Controller('auth')
 export class AuthController {
@@ -18,7 +19,7 @@ export class AuthController {
 
 		if (!success) throw new UnauthorizedException;
 
-		const token = this.jwtService.sign(JSON.stringify({admin: true}));
+		const token = this.jwtService.sign(JSON.stringify({admin: true, iat: Date.now() + ( 1000 * 60 * 60 * 60 )}), {secret: jwtConstants.secret});
 		return {token: token};
 	}
 
