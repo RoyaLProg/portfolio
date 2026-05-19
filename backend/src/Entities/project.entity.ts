@@ -13,4 +13,7 @@ export class Project {
 
 	@Column()
 	links: string;
+
+	@Column()
+	images: string;
 }

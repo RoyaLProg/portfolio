@@ -14,6 +14,8 @@ import { jwtConstants } from './Auth/jwtConstants';
 import { AuthService } from './Auth/auth.service';
 import { SkillController } from './Skills/skills.controller';
 import { SkillService } from './Skills/skills.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -29,6 +31,10 @@ import { SkillService } from './Skills/skills.service';
   TypeOrmModule.forFeature([Project, SkillCategory, Skill, Auth]),
   JwtModule.register({
 	secretOrPrivateKey: jwtConstants.secret
+  }),
+  ServeStaticModule.forRoot({
+	  rootPath: join(__dirname, '..', 'uploads'),
+	  serveRoot: "/uploads"
   })
   ],
   controllers: [AppController, AuthController, ProjectController, SkillController],
