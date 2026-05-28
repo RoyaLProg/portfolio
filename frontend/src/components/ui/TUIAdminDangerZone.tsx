@@ -2,13 +2,18 @@ import { ContentContainer } from "./TUIContentContainer";
 import { useNav } from "../context/navContext";
 import figlet from "figlet";
 import big from "figlet/fonts/Big";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useAdmin } from "../context/adminContext";
 
 export function AdminDangerZone() {
 	const navCtx = useNav();
+	const adminCtx = useAdmin();
+	const [password, setPassword] = useState<string>("");
+	const [oldPassword, setOldPassword] = useState<string>("");
+	const [confirmPassword, setConfirmPassword] = useState<string>("");
 
 	if (navCtx === null) return ;
-	if (navCtx.active !== "Danger Zone") return ;
+	if (adminCtx === null) return ;
 
 	useEffect(() => {
 		const titleDiv = document.getElementById('dangertitle');
@@ -41,6 +46,20 @@ export function AdminDangerZone() {
 		titleDivPhone.innerHTML = phoneEls1.reduce((s1,s2) => s1 += '\n' + s2) + '\n' + phoneEls2.reduce((s1,s2) => s1 += '\n' + s2);
 	}, []);
 
+	if (navCtx.active !== "Danger Zone") return ;
+
+	async function updatePassword(event: React.MouseEvent) {
+		event.preventDefault();
+		if (password !== confirmPassword) return ;
+
+		const init: RequestInit = {body: JSON.stringify({password, oldPassword}), method: "POST", headers: {"Content-Type": "application/json"}}
+		const res = await adminCtx?.adminFetch("http://localhost:3000/api/auth/changepassword", init);
+
+		if (res && res.ok) return;
+
+		console.log(res);
+	}
+
 	return (
 		<ContentContainer
 			show={navCtx.active === "Danger Zone"}
@@ -55,13 +74,17 @@ export function AdminDangerZone() {
 						<form className="flex items-center flex-col gap-3">
 							<div className="flex flex-col gap-2">
 								<label>Old Password</label>
-								<input type="password" value="" className="text-(--grey) border"/>
+								<input type="password" value={oldPassword} className="text-(--grey) border" onChange={(event) => {setOldPassword(event.target.value)}}/>
 							</div>
 							<div className="flex flex-col gap-2">
 								<label>New Password</label>
-								<input type="password" value="" className="text-(--grey) border"/>
+								<input type="password" value={password} className="text-(--grey) border" onChange={(event) => {setPassword(event.target.value)}}/>
 							</div>
-							<input type="submit" onClick={() => {}} value="Confirm" className="p-2 border border-(--red) hover:bg-(--red) hover:text-(--black) w-50"/>
+							<div className="flex flex-col gap-2">
+								<label>Confirm New Password</label>
+								<input type="password" value={confirmPassword} className="text-(--grey) border" onChange={(event) => {setConfirmPassword(event.target.value)}}/>
+							</div>
+							<input type="submit" onClick={updatePassword} value="Confirm" className="p-2 border border-(--red) hover:bg-(--red) hover:text-(--black) w-50"/>
 						</form>
 					</div>
 					<div className="border border-(--red) p-2 flex flex-col gap-8">

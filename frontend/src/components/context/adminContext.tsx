@@ -7,7 +7,8 @@ import {
 
 interface adminContextProps {
 	isLoggedIn: boolean,
-	checkPassword: (password: string) => void;
+	checkPassword: (password: string) => void,
+	adminFetch: (url: RequestInfo | URL, option?: RequestInit) => Promise<Response | null>
 }
 
 export const adminContext = createContext<adminContextProps | null>(null);
@@ -44,11 +45,31 @@ export function AdminContextProvider(props: PropsWithChildren) {
 		// setIsLoggedIn(true);
 	}
 
+	async function adminFetch(url: RequestInfo | URL, option?: RequestInit): Promise<Response | null> {
+		const defaultOption: RequestInit = { headers: {"Authorization": "bearer " + localStorage.getItem('token')}}; 
+
+		if (option) {
+			option.headers = {...option?.headers, "Authorization": "Bearer " + localStorage.getItem('token')};
+		}
+
+		const res = await fetch(url, option ?? defaultOption)
+
+		if (res.ok || res.status >= 500) return res; // server error OR status = ok
+		else if (res.status > 400) {
+			setIsLoggedIn(false);
+			localStorage.removeItem('token');
+			return null;
+		} else {
+			return res;
+		}
+	}
+
 	return (
 		<adminContext.Provider
 			value={{
 				isLoggedIn,
 				checkPassword,
+				adminFetch
 			}}
 		>
 			{props.children}
