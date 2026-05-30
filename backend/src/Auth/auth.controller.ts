@@ -15,9 +15,9 @@ export class AuthController {
 	@Post()
 	async login(@Body() {password}: {password: string}) {
 		if (password === undefined) throw new BadRequestException();
-		const success = this.authService.login(password);
+		const success = await this.authService.login(password);
 
-		if (!success) throw new UnauthorizedException;
+		if (!success) throw new UnauthorizedException();
 
 		const token = this.jwtService.sign(JSON.stringify({admin: true, iat: Date.now() + ( 1000 * 60 * 60 * 60 )}), {secret: jwtConstants.secret});
 		return {token: token};

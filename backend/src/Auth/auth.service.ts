@@ -12,12 +12,12 @@ export class AuthService {
 	){}
 
 	async login(password: string): Promise<boolean> {
-		const hashedPassword = await bcrypt.hash(password, 10);
-		const entries = await this.authRepository.count({where: {password: hashedPassword}});
-		if (entries === 1) return true;
 		const entryCount = await this.authRepository.count();
-		if (entryCount >= 1) return false;
-		return password === process.env.PORTFOLIO_PASSWORD;
+		if (entryCount === 0)
+			return password === process.env.PORTFOLIO_ADMIN_PASSWORD;
+
+		const hashedPassword = (await this.authRepository.find())[0]['password'];
+		return await bcrypt.compare(password, hashedPassword)
 	}
 
 	async updatePassword(password: string): Promise<boolean> {
