@@ -1,6 +1,7 @@
-import { Body, Controller, Get, InternalServerErrorException, Post, Param, Patch, BadRequestException, NotFoundException } from "@nestjs/common";
+import { Body, Controller, Get, InternalServerErrorException, Post, Param, Patch, BadRequestException, NotFoundException, UseGuards } from "@nestjs/common";
 import { ProjectService } from "./projects.service";
 import { Project } from "src/Entities/project.entity";
+import { AuthGuard } from "src/Auth/auth.guard";
 
 @Controller('projects')
 export class ProjectController {
@@ -13,6 +14,7 @@ export class ProjectController {
 	}
 
 	@Post()
+	@UseGuards(AuthGuard)
 	async addProject(@Body() project: Project) {
 		const added = this.projectService.addProject(project);
 		if (!added) throw new InternalServerErrorException('Could not add project to database');
@@ -26,6 +28,7 @@ export class ProjectController {
 	}
 
 	@Patch(':id')
+	@UseGuards(AuthGuard)
 	async updateProject(@Param('id') id: number, @Body() project: Project): Promise<Project> {
 		if (+id !== project.id) throw new BadRequestException();
 		const result = await this.projectService.updateProject(project);

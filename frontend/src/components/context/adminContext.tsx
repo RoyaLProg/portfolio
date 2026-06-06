@@ -24,17 +24,19 @@ export function AdminContextProvider(props: PropsWithChildren) {
 				headers: { 'Content-Type': 'application/json' },
 				method: "POST"
 			}).then( (response) => {
+				if (response.status === 401) throw "wrong password"
 				return response.json();
-			}).then( (data) => {
+			})
+			.then( (data) => {
 				if (!data['token']) {
-					console.log(data);
+					console.error(data);
 					return ;
 				}
 				localStorage.setItem('token', data['token']);
 				setIsLoggedIn(true);
 			});
 		} catch (e) {
-			console.error(e);
+			console.log(e);
 		}
 
 		// NOTE: testing block
